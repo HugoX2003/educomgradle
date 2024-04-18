@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class CategoriaService {
-    //GPT
+
     private final CategoriaRepository categoriaRepository;
 
     public CategoriaService(CategoriaRepository categoriaRepository) {
@@ -31,5 +31,5 @@ public class CategoriaService {
     public void eliminarCategoria(Long id) {
         categoriaRepository.deleteById(id);
     }
-    //FIN
+
 }

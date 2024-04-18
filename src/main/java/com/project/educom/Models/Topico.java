@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "topics")
 public class Topico {
-    //GPT
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,5 +18,5 @@ public class Topico {
     @ManyToOne
     @JoinColumn(name = "thread_id")
     private Hilo hilo;
-    //FIN GPT
+
 }

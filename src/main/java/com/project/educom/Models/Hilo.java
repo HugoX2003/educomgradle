@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Table(name = "threads")
 public class Hilo {
 
-    //GPT
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,5 +44,5 @@ public class Hilo {
         this.fechaCreacion = fechaCreacion;
         this.link = link;
     }
-    //FIN GPT
+
 }

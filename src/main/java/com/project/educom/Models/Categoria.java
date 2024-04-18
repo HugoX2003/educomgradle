@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Table(name = "categories")
 public class Categoria {
 
-    //GPT
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -51,5 +50,4 @@ public class Categoria {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    //FIN GPT
 }

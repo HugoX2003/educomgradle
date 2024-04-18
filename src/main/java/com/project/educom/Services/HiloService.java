@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class HiloService {
-    //GPT
+
     private final HiloRepository hiloRepository;
 
     public HiloService(HiloRepository hiloRepository) {
@@ -35,5 +35,5 @@ public class HiloService {
     public Hilo guardarCambios(Hilo hilo) {
         return hiloRepository.save(hilo);
     }
-    //FIN
+
 }

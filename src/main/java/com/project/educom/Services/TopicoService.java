@@ -9,11 +9,11 @@ import java.util.Optional;
 
 @Service
 public class TopicoService {
-    //GPT
+
     private final TopicoRepository topicoRepository;
 
     public TopicoService(TopicoRepository topicoRepository) {
         this.topicoRepository = topicoRepository;
     }
-    //FIN
+
 }
