@@ -1,6 +1,6 @@
 package com.project.educom.Controllers;
 
-import com.project.educom.Models.Comentario;
+// import com.project.educom.Models.Comentario;
 import com.project.educom.Models.Usuario;
 import com.project.educom.Services.LoginService;
 import org.springframework.http.HttpStatus;
@@ -46,17 +46,17 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Comentario> login(@RequestBody Map<String, String> loginRequest) {
-        String email = loginRequest.get("email");
-        String password = loginRequest.get("password");
-        Usuario usuario = loginService.verifyAccount(email, password);
+public ResponseEntity<String> login(@RequestBody Map<String, String> loginRequest) {
+    String email = loginRequest.get("email");
+    String password = loginRequest.get("password");
+    Usuario usuario = loginService.verifyAccount(email, password);
 
-        if (usuario != null) {
-            String comment = "Estas de vuelta: " + usuario.getFirstName() + usuario.getLastName();
-            Comentario res = new Comentario(comment, usuario);
-            return new ResponseEntity<>(res, HttpStatus.OK);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    if (usuario != null) {
+        String comment = "Estás de vuelta, " + usuario.getFirstName() + " " + usuario.getLastName() + "!";
+        return new ResponseEntity<>(comment, HttpStatus.OK);
+    } else {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+}
+
 }

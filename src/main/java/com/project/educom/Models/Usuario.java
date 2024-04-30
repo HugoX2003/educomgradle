@@ -1,12 +1,13 @@
 package com.project.educom.Models;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class Usuario {
+
     @Id
-    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userid;
     
@@ -16,7 +17,7 @@ public class Usuario {
     @Column(name = "last_name")
     private String lastName;
     
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     
     @Column(name = "password")
@@ -24,6 +25,9 @@ public class Usuario {
     
     @Column(name = "registration_date")
     private LocalDate registrationDate;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Comentario> comentarios;
 
     // Constructor sin argumentos
     public Usuario() {
@@ -86,5 +90,13 @@ public class Usuario {
 
     public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
     }
 }

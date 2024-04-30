@@ -26,7 +26,7 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    // Getters y setters para cada campo
+    // Getters y setters
     public Long getId() {
         return id;
     }

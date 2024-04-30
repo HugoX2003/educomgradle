@@ -1,27 +1,92 @@
 package com.project.educom.Models;
 
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "comments")
 public class Comentario {
-    private String comment;
-    private Usuario user;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(name = "mensaje", columnDefinition = "TEXT")
+    private String mensaje;
+    
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "hilo_id", referencedColumnName = "id")
+    private Hilo hilo;
+    
+    @Column(name = "fecha_creacion")
+    private LocalDateTime fechaCreacion;
+    
+    @Column(name = "link")
+    private String link;
 
-    public Comentario(String comment, Usuario user) {
-        this.comment = comment;
-        this.user = user;
+    // Constructor sin argumentos
+    public Comentario() {
     }
 
-    public String getComment() {
-        return comment;
+    // Constructor con todos los argumentos
+    public Comentario(String mensaje, Usuario usuario, Hilo hilo, LocalDateTime fechaCreacion, String link) {
+        this.mensaje = mensaje;
+        this.usuario = usuario;
+        this.hilo = hilo;
+        this.fechaCreacion = fechaCreacion;
+        this.link = link;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    // Getters y setters
+    public Long getId() {
+        return id;
     }
 
-    public Usuario getUser() {
-        return user;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setUser(Usuario user) {
-        this.user = user;
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Hilo getHilo() {
+        return hilo;
+    }
+
+    public void setHilo(Hilo hilo) {
+        this.hilo = hilo;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

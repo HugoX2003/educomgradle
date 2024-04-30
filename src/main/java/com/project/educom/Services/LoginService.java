@@ -29,7 +29,7 @@ public class LoginService {
 
     public void updateUser(Usuario usuario, Long userid){
         Usuario userExists = loginRepository.findById(userid)
-                .orElse(new Usuario());
+            .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con ID: " + userid));
         userExists.setPassword(usuario.getPassword());
         loginRepository.save(userExists);
     }

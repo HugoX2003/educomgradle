@@ -21,6 +21,9 @@ public class HiloService {
     }
 
     public Hilo guardarHilo(Hilo hilo) {
+        if (hilo.getId() != null) {
+            throw new IllegalArgumentException("El hilo nuevo no debe tener un ID");
+        }
         return hiloRepository.save(hilo);
     }
 
@@ -33,6 +36,9 @@ public class HiloService {
     }
 
     public Hilo guardarCambios(Hilo hilo) {
+        if (hilo.getId() == null || !hiloRepository.existsById(hilo.getId())) {
+            throw new IllegalArgumentException("El hilo debe existir para poder actualizarlo");
+        }
         return hiloRepository.save(hilo);
     }
 
